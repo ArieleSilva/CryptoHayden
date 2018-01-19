@@ -5,7 +5,7 @@
  * Assignment: Lab 01
  * Due Date:   Wednesday, January 24th, 2018
  * Version:    1.0
- * <p>
+ *
  * This file contains the Driver class that runs
  * the enclosed encryption scheme.
  */
