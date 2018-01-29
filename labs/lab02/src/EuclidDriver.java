@@ -36,7 +36,7 @@ public class EuclidDriver {
 
       // Input sanitation
       for (String s : longs) {
-        if (Long.parseLong(s) % 1 == 0) {
+        if (Long.parseLong(s) % 1 != 0) {
           System.out.println("Please only enter integer values!");
           return;
         }
@@ -51,16 +51,16 @@ public class EuclidDriver {
       long a = Long.parseLong(longs[0]);
       long b = Long.parseLong(longs[1]);
 
-      // Debugging
-//      System.out.println("Num 1: " + a);
-//      System.out.println("Num 2: " + b);
-
       // Swap values if second input is larger.
       if (b > a) {
         long swap = b;
         b = a;
         a = swap;
       }
+
+      // Debugging
+      System.out.println(a);
+      System.out.println(b);
 
       System.out.println(euclidAlg(a, b));
     }
@@ -69,23 +69,19 @@ public class EuclidDriver {
   /**
    * Recursive implementation of the Euclidean Algorithm.
    *
-   * @param a a long
-   * @param b a long
+   * @param a the larger long
+   * @param d the smaller long
    * @return a long of GCD(a, b)
    */
   private static long euclidAlg(long a, long d) {
 
-//      // a = qd + r
-//      // q = floor(a/d)
-//      // r = a - qd
-//      long q = Math.floorDiv(a, d);
-//      long r = a - q * d;
-//      return r;
-
-    if (d == 0) {
+    if (d == 0)
       return a;
-    } else {
+
+    else
       return euclidAlg(d, a % d);
-    }
+
+//      long q = a - (d * (a / d));
+//      return euclidAlg(d, q);
   }
 }
