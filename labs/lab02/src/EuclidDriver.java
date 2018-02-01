@@ -1,5 +1,5 @@
 /**
- * file: Lab02_Driver.java
+ * file: EuclidDriver.java
  * author: Kevin Hayden
  * course: MSCS 630
  * assignment: Lab 02
@@ -13,11 +13,14 @@
 import java.util.Scanner;
 
 /**
- *
+ * The class that houses the main driver and
+ * Euclidean algorithm.
  */
 public class EuclidDriver {
 
   /**
+   * Usage: Two integers(long) separated by a single space.
+   *
    * @param args
    */
   public static void main(String[] args) {
@@ -25,13 +28,13 @@ public class EuclidDriver {
     // Scanner object to read input.
     Scanner input = new Scanner(System.in);
 
-    System.out.print("Please enter two numbers separated by a space: ");
-
     // Grabs the longs to be plugged into euclidAlg
     while (input.hasNext()) {
 
+      // Reads two String values.
       String values = input.nextLine();
 
+      // Splits up numbers and adds them to an array.
       String[] longs = values.split(" ");
 
       // Input sanitation
@@ -42,7 +45,7 @@ public class EuclidDriver {
         }
       }
 
-      if (longs.length > 2) {
+      if (longs.length != 2) {
         System.out.println("Please enter two positive numbers!");
         return;
       }
@@ -62,7 +65,7 @@ public class EuclidDriver {
       System.out.println(a);
       System.out.println(b);
 
-      System.out.println(euclidAlg(a, b));
+      System.out.println("GCD: " + euclidAlg(a, b) + "\n");
     }
   }
 
