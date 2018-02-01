@@ -83,24 +83,19 @@ public class ExtEuclidDriver {
   private static long[] euclidAlgExt(long a, long d) {
 
     // Book's iterative approach.
-    long temp, quotient, remainder;
     long[] U = new long[] {a, 1, 0};
     long[] V = new long[] {d, 0, 1};
 
+    // Base case.
     while (d != 0) {
 
-      quotient = a / d;
-      remainder = a % d;
+      long quotient = a / d;
+      long remainder = a % d;
       a = d;
       d = remainder;
 
-      temp = U[1] - quotient * U[2];
-      U[1] = U[2];
-      U[2] = temp;
-
-      temp = V[1] - quotient * V[2];
-      V[1] = V[2];
-      V[2] = temp;
+      U = compute(U, quotient);
+      V = compute(V, quotient);
     }
 
     long gcd = a;
@@ -120,5 +115,20 @@ public class ExtEuclidDriver {
 //    long y = longs[1] - (a / d) * longs[2];
 
     return new long[] {gcd, x, y};
+  }
+
+  /**
+   * Method that computes the coefficient given an array.
+   *
+   * @param arr an array of longs.
+   * @param quotient the quotient value.
+   * @return the new array.
+   */
+  private static long[] compute(long[] arr, long quotient) {
+
+    long temp = arr[1] - quotient * arr[2];
+    arr[1] = arr[2];
+    arr[2] = temp;
+    return arr;
   }
 }
