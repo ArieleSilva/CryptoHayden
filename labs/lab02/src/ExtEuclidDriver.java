@@ -59,8 +59,8 @@ public class ExtEuclidDriver {
       }
 
       // Debugging
-//      System.out.println("Num 1: " + a);
-//      System.out.println("Num 2: " + b);
+//      System.out.println("Long 1: " + a);
+//      System.out.println("Long 2: " + b);
 
       long[] longArray = euclidAlgExt(a, b);
       long d = longArray[0], x = longArray[1], y = longArray[2];

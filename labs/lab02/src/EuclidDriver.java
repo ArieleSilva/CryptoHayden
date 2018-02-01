@@ -20,10 +20,10 @@ public class EuclidDriver {
 
   /**
    * Usage: Two integers(long) separated by a single space.
-   *
-   * @param args
    */
   public static void main(String[] args) {
+
+    System.out.print("Please enter two longs separated by a single space: ");
 
     // Scanner object to read input.
     Scanner input = new Scanner(System.in);
@@ -39,15 +39,16 @@ public class EuclidDriver {
 
       // Input sanitation
       for (String s : longs) {
+
+        if (longs.length != 2) {
+          System.out.println("Please enter two positive numbers!");
+          return;
+        }
+
         if (Long.parseLong(s) % 1 != 0) {
           System.out.println("Please only enter integer values!");
           return;
         }
-      }
-
-      if (longs.length != 2) {
-        System.out.println("Please enter two positive numbers!");
-        return;
       }
 
       // Converts strings to longs (if integer values)
@@ -62,10 +63,10 @@ public class EuclidDriver {
       }
 
       // Debugging
-      System.out.println(a);
-      System.out.println(b);
+//      System.out.println("Long 1: " + a);
+//      System.out.println("Long 2: " + b);
 
-      System.out.println("GCD: " + euclidAlg(a, b) + "\n");
+      System.out.println("GCD("+ a + ", " + b + ") = " + euclidAlg(a, b) + "\n");
     }
   }
 
@@ -78,12 +79,15 @@ public class EuclidDriver {
    */
   private static long euclidAlg(long a, long d) {
 
+    // Base case.
     if (d == 0)
       return a;
 
+    // Recursive call using modulo.
     else
       return euclidAlg(d, a % d);
 
+    // Without use of modulo.
 //      long q = a - (d * (a / d));
 //      return euclidAlg(d, q);
   }
