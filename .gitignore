@@ -24,6 +24,14 @@ hs_err_pid*
 
 # IntelliJ Files #
 *.iml
-*.xml
 *.idea
 /out/
+
+.gradle
+/local.properties
+/.idea/workspace.xml
+/.idea/libraries
+.DS_Store
+/build
+/captures
+.externalNativeBuild

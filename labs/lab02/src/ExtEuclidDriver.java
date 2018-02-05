@@ -12,15 +12,23 @@
 
 import java.util.Scanner;
 
+/**
+ * Class that houses the driver method as well as the Extended
+ * Euclidean Algorithm.
+ */
 public class ExtEuclidDriver {
 
   /**
-   * Main class to test usage of the Extended Euclidean Algorithm.
+   * Driver method to test usage of the Extended Euclidean Algorithm.
+   * Usage: java ExtEuclidDriver long1 long2
+   *
+   * @param args standard method input.
    */
   public static void main(String[] args) {
 
     System.out.println("Extended Euclidean Algorithm formula: ");
     System.out.println("ax + by = GCD(a, b)\n");
+    System.out.println("Please enter two integers separated by a single: ");
 
     // Scanner object to read input.
     Scanner input = new Scanner(System.in);
@@ -57,10 +65,6 @@ public class ExtEuclidDriver {
         b = a;
         a = swap;
       }
-
-      // Debugging
-//      System.out.println("Long 1: " + a);
-//      System.out.println("Long 2: " + b);
 
       long[] longArray = euclidAlgExt(a, b);
       long d = longArray[0], x = longArray[1], y = longArray[2];

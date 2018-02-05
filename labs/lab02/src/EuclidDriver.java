@@ -19,7 +19,10 @@ import java.util.Scanner;
 public class EuclidDriver {
 
   /**
+   * Driver method to test usage of the Euclidean Algorithm.
    * Usage: Two integers(long) separated by a single space.
+   *
+   * @param args standard method input.
    */
   public static void main(String[] args) {
 
@@ -61,10 +64,6 @@ public class EuclidDriver {
         b = a;
         a = swap;
       }
-
-      // Debugging
-//      System.out.println("Long 1: " + a);
-//      System.out.println("Long 2: " + b);
 
       System.out.println("GCD("+ a + ", " + b + ") = " + euclidAlg(a, b) + "\n");
     }
