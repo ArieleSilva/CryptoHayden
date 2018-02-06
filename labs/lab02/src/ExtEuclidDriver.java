@@ -87,8 +87,8 @@ public class ExtEuclidDriver {
   private static long[] euclidAlgExt(long a, long d) {
 
     // Book's iterative approach.
-    long[] U = new long[] {a, 1, 0};
-    long[] V = new long[] {d, 0, 1};
+    long[] U = new long[]{a, 1, 0};
+    long[] V = new long[]{d, 0, 1};
 
     // Base case.
     while (d != 0) {
@@ -118,7 +118,7 @@ public class ExtEuclidDriver {
 //    long x = longs[2];
 //    long y = longs[1] - (a / d) * longs[2];
 
-    return new long[] {gcd, x, y};
+    return new long[]{gcd, x, y};
   }
 
   /**
