@@ -85,9 +85,5 @@ public class EuclidDriver {
     // Recursive call using modulo.
     else
       return euclidAlg(d, a % d);
-
-    // Without use of modulo.
-//      long q = a - (d * (a / d));
-//      return euclidAlg(d, q);
   }
 }

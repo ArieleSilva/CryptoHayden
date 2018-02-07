@@ -28,7 +28,7 @@ public class ExtEuclidDriver {
 
     System.out.println("Extended Euclidean Algorithm formula: ");
     System.out.println("ax + by = GCD(a, b)\n");
-    System.out.println("Please enter two integers separated by a single: ");
+    System.out.print("Please enter two integers separated by a single: ");
 
     // Scanner object to read input.
     Scanner input = new Scanner(System.in);
@@ -77,7 +77,7 @@ public class ExtEuclidDriver {
   }
 
   /**
-   * Recursive implementation of the Extended
+   * Iterative implementation of the Extended Euclidean Algorithm.
    * Euclidean Algorithm ax + by = GCD(a, b)
    *
    * @param a The bigger long.
@@ -89,36 +89,26 @@ public class ExtEuclidDriver {
     // Book's iterative approach.
     long[] U = new long[]{a, 1, 0};
     long[] V = new long[]{d, 0, 1};
+    long[] W = new long[3];
 
-    // Base case.
     while (d != 0) {
 
+      // Euclidean Algorithm
       long quotient = a / d;
       long remainder = a % d;
       a = d;
       d = remainder;
 
+      // Generate coefficients
       U = compute(U, quotient);
       V = compute(V, quotient);
     }
 
-    long gcd = a;
-    long x = U[1];
-    long y = V[1];
+    W[0] = a;     // The GCD(a, d).
+    W[1] = U[1];  // The x coefficient.
+    W[2] = V[1];  // The y coefficient.
 
-    // My recursive approach.
-//    if (d == 0) // Base case
-//      return new long[] {a, 1, 0};
-//
-//    // Recursively calls euclidAlgExt all the way to the base case.
-//    long[] longs = euclidAlgExt(d, a % d);
-//
-//    // The GCD of (a, b), x coefficient, y coefficient
-//    long gcd = longs[0];
-//    long x = longs[2];
-//    long y = longs[1] - (a / d) * longs[2];
-
-    return new long[]{gcd, x, y};
+    return W;
   }
 
   /**

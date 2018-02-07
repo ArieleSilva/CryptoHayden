@@ -14,8 +14,8 @@
  * Driver method to test usage of the Euclidean Algorithm.
  */
 fun main(args: Array<String>) {
-  print("Please enter two longs separated by a single space: ")
 
+  print("Please enter two longs separated by a single space: ")
   val input: String? = readLine()
 
   // Input sanitation
