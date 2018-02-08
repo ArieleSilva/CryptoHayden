@@ -61,7 +61,7 @@ public class Lab01_Driver {
     final int INDEX = 65;
 
     // int array initialized to the size of the method parameter input.
-    int[ ] output = new int[plainText.length()];
+    int[] output = new int[plainText.length()];
 
     // Normalize plainText to all uppercase.
     plainText = plainText.toUpperCase();
