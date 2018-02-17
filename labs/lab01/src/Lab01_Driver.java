@@ -5,7 +5,7 @@
  * assignment: Lab 01
  * due date: January 24th, 2018
  * version: 1.0
- *
+ * <p>
  * This file contains the main class driver
  * that runs the str2int encryption scheme.
  */
@@ -55,7 +55,7 @@ public class Lab01_Driver {
    * @param plainText The string object to be encrypted.
    * @return an array of ints to be printed
    */
-  private static int[ ] str2int(String plainText) {
+  private static int[] str2int(String plainText) {
 
     // Constant derived from where 'A' starts on the ASCII chart.
     final int INDEX = 65;
