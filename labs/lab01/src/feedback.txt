@@ -1,0 +1,6 @@
+10 pts
+
+Functionality: pass
+Style checl: pass
+
+Very nice, concise code. Beautiful.
