@@ -28,7 +28,7 @@ public class DeterminantDriver {
 
     // Read input for modulus and matrix size.
     System.out.print("Please enter mod and matrix size separated by a single space: ");
-    ArrayList matrixValues = new <Integer>ArrayList();
+    ArrayList<Integer> matrixValues = new ArrayList<>();
     Scanner input = new Scanner(System.in);
     String values = input.nextLine();
     String[] nums = values.split(" ");
@@ -42,6 +42,7 @@ public class DeterminantDriver {
       System.out.print("Please enter " + size + " integers separated by a space: ");
       values = input.nextLine();
       nums = values.split(" ");
+
       for (String s : nums)
         matrixValues.add(Integer.parseInt(s) % modulus);
     }
@@ -73,21 +74,20 @@ public class DeterminantDriver {
         matrix[i][j] = matrix[i][j] % mod;
 
     // Base case (size 1):
-    if (matrix[0].length == 1) det = matrix[0][0];
-
+    if (matrix[0].length == 1)
+      det = matrix[0][0];
 
     // Base case (size 2):
     else if (matrix[0].length == 2)
       det = matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0];
 
-
     // Recursive case:
     else
       for (int index = 0; index < matrix.length; index++)
         if (index % 2 == 0)
-          det = det + matrix[0][index] * cofModDet(mod, generateSubMatrix(index, matrix));
+          det += matrix[0][index] * cofModDet(mod, generateSubMatrix(index, matrix));
         else
-          det = det - matrix[0][index] * cofModDet(mod, generateSubMatrix(index, matrix));
+          det -= matrix[0][index] * cofModDet(mod, generateSubMatrix(index, matrix));
 
     return det % mod;
   }
