@@ -51,7 +51,7 @@ public class DeterminantDriver {
     int[][] matrix = new int[size][size];
     for (int i = 0; i < size; i++)
       for (int j = 0; j < size; j++)
-        matrix[i][j] = (int) matrixValues.remove(0);
+        matrix[i][j] = matrixValues.remove(0);
 
     System.out.println("Determinant: " + cofModDet(modulus, matrix));
   }
@@ -106,7 +106,7 @@ public class DeterminantDriver {
     int[][] subMatrix = new int[matrix.length - 1][matrix[0].length - 1];
 
     // ArrayList to hold values for new sub-matrix.
-    ArrayList integers = new ArrayList<Integer>(0);
+    ArrayList<Integer> integers = new ArrayList<>(0);
 
     // Add correct integers to ArrayList
     for (int i = 0; i < matrix.length; i++)
@@ -116,7 +116,7 @@ public class DeterminantDriver {
     // Populate the newly created submatrix
     for (int i = 0; i < subMatrix.length; i++)
       for (int j = 0; j < subMatrix[i].length; j++)
-        subMatrix[i][j] = (int) integers.remove(0);
+        subMatrix[i][j] = integers.remove(0);
 
     return subMatrix;
   }

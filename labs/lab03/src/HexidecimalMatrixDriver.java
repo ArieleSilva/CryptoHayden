@@ -34,7 +34,6 @@ public class HexidecimalMatrixDriver {
     // Prompt user for plaintext:
     System.out.print("Enter plaintext: ");
     String plainText = input.nextLine();
-    int[][] hexMatrix;
 
     // Prints matrix until empty
     while (plainText.length() != 0) {
@@ -43,6 +42,7 @@ public class HexidecimalMatrixDriver {
       if (plainText.length() > 15) {
         printHexMatrix(getHexMatP(sub, plainText.substring(0, 16)));
         plainText = plainText.substring(16);
+        System.out.println();
       }
 
       // If plainText is less than 16 print whole string:
@@ -64,13 +64,15 @@ public class HexidecimalMatrixDriver {
    */
   private static int[][] getHexMatP(char sub, String plainText) {
 
-    // Add each character to character ArrayList:
-    ArrayList<Character> chars = new ArrayList<>();
+    // StringBuilder object to create a length 16 string:
+    StringBuilder cipherText = new StringBuilder(plainText);
 
     // If plainText is less than 16 append with sub character:
     while (plainText.length() < 16)
-      plainText += sub;
+      plainText = cipherText.append(sub).toString();
 
+    // Add each character to character ArrayList:
+    ArrayList<Character> chars = new ArrayList<>();
     for (int index = 0; index < plainText.length(); index++)
       chars.add(plainText.charAt(index));
 
@@ -95,6 +97,5 @@ public class HexidecimalMatrixDriver {
         System.out.print(Integer.toHexString(matrix[i][j]).toUpperCase() + " ");
       System.out.println();
     }
-    System.out.println();
   }
 }
