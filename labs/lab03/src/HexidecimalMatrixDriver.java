@@ -60,7 +60,7 @@ public class HexidecimalMatrixDriver {
    *
    * @param sub the substitution char to append to plainText.
    * @param plainText the plainText to be converted to ASCII.
-   * @return
+   * @return an int matrix with ASCII values.
    */
   private static int[][] getHexMatP(char sub, String plainText) {
 
