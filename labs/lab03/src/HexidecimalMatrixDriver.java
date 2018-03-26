@@ -56,7 +56,7 @@ public class HexidecimalMatrixDriver {
   /**
    * If plainText length is less than 16, appends sub char to
    * the end until it is length 16. The method then converts
-   * plainText to ASCII matrix.
+   * plainText to ASCII int value matrix.
    *
    * @param sub the substitution char to append to plainText.
    * @param plainText the plainText to be converted to ASCII.

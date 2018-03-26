@@ -11,15 +11,21 @@
 
 fun main(args: Array<String>) {
 
-  // Read input for modulus and matrix size.
+  // Read input for modulus and matrix size:
   print("Please enter mod and matrix separated by a single space: ")
   var input: String? = readLine()
   var ints: List<String> = input!!.split(" ".toRegex())
-  val matrixValues: MutableList<Int> = mutableListOf()
+
+  // Input sanitation:
   if (ints.size != 2) return
   ints.forEach {if (it.toIntOrNull() == null) return}
+
+  // Assign input values to modulus and size:
   val modulus: Int = ints[0].toInt()
   val size: Int = ints[1].toInt()
+
+  // Populate Matrix:
+  val matrixValues: MutableList<Int> = mutableListOf()
   for (index in 0 until size) {
     print("Please enter $size integers separated by a space: ")
     input = readLine()
