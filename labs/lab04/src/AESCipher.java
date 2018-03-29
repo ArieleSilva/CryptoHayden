@@ -150,13 +150,7 @@ public class AESCipher {
    */
   private static String[] shift(String[] stringArray) {
 
-    String temp = stringArray[0];
-    stringArray[0] = stringArray[1];
-    stringArray[1] = stringArray[2];
-    stringArray[2] = stringArray[3];
-    stringArray[3] = temp;
-
-    return stringArray;
+    return new String[]{stringArray[1], stringArray[2], stringArray[3], stringArray[0]};
   }
 
   /**
