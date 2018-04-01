@@ -9,8 +9,6 @@
  * and SBox classes.
  */
 
-// CBC not ECB
-
 import java.util.Scanner;
 
 /**
@@ -29,11 +27,9 @@ public class DriverAES {
 
     // Key: 5468617473206D79204B756E67204675
     String key = scanner.nextLine();
-//    System.out.println(key.length());
 
     // Plain Text: 54776F204F6E65204E696E652054776F
     String plainText = scanner.nextLine();
-//    System.out.println(plainText.length());
 
     // Generate the ciphertext:
     String cipherText = AESCipher.AES(plainText, key);
