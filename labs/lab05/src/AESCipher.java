@@ -91,7 +91,7 @@ class AESCipher {
    * @param keyHex the 32 bit hex key.
    * @return a String array with the secure keys.
    */
-  private static String[] aesRoundKeys(String keyHex) {
+  public static String[] aesRoundKeys(String keyHex) {
 
     // Input sanitation:
     if (keyHex.length() != 32)
@@ -243,7 +243,7 @@ class AESCipher {
    * @param hexString the hex string to be converted.
    * @return the matrix.
    */
-  private static String[][] generateMatrix(String hexString, int row, int col) {
+  public static String[][] generateMatrix(String hexString, int row, int col) {
 
     // Add each individual hex value to ArrayList
     ArrayList<Character> values = new ArrayList<>();
@@ -256,6 +256,7 @@ class AESCipher {
       for (int j = 0; j < 4; j++)
         k[j][i] = values.remove(0).toString() + values.remove(0).toString();
 
+    // Return the matrix:
     return k;
   }
 
@@ -267,7 +268,7 @@ class AESCipher {
    * @param keyHex the hexidecimal key.
    * @return the modified hexidecimal matrix.
    */
-  private static String[][] AESStateXOR(String[][] inHex, String[][] keyHex) {
+  public static String[][] AESStateXOR(String[][] inHex, String[][] keyHex) {
     for (int i = 0; i < 4; i++)
       for (int j = 0; j < 4; j++)
         inHex[i][j] = exclusiveOr(inHex[i][j], keyHex[i][j]);
@@ -297,7 +298,7 @@ class AESCipher {
    * @param inStateHex the matrix.
    * @return the modified matrix.
    */
-  private static String[][] AESShiftRow(String[][] inStateHex) {
+  public static String[][] AESShiftRow(String[][] inStateHex) {
 
     String[][] temp = new String[4][4];
     for (int index = 0; index < 4; index++) {
@@ -318,7 +319,7 @@ class AESCipher {
    * @param inStateHex the given matrix.
    * @return a mixed matrix.
    */
-  private static String[][] AESMixColumn(String[][] inStateHex) {
+  public static String[][] AESMixColumn(String[][] inStateHex) {
 
     // Create new matrix comprised of given matrix in integer format:
     int n[][] = new int[4][4];

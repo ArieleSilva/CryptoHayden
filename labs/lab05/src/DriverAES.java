@@ -2,7 +2,7 @@
  * file: DriverAES.java
  * author: Kevin Hayden
  * course: MSCS 630
- * assignment: Lab 04
+ * assignment: Lab 05
  * due date: April 4th, 2018
  * version: 1.0
  * Tests the implementation of the AESCipher
