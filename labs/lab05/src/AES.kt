@@ -196,6 +196,85 @@ class AES {
   )
 
   /**
+   * Takes an input string and returns it as
+   * concatenated encrypted ciphertext of
+   * length multiples of 32 bits.
+   *
+   * @param plainText the input string.
+   * @param keyHex the key.
+   * @return the ciphertext.
+   */
+  public fun encrypt(plainText: String, keyHex: String): String {
+
+    var string = plainText
+    val list = mutableListOf<String>()
+    val char = ' '
+
+    // Parse substrings of 16 to a list:
+    while (string.isNotBlank()) {
+      when (string.length > 15) {
+        true -> {
+          list.add(string.substring(0, 16).toUpperCase())
+          string = string.substring(16)
+        }
+
+        false -> {
+          val sb = StringBuilder(string)
+          while (sb.length != 16)
+            sb.append(char)
+
+          string = sb.toString()
+        }
+      }
+    }
+
+    // Parse strings to hex strings:
+    val hexStrings = mutableListOf<String>()
+    for (sub in list) {
+      val sb = StringBuilder()
+      for (index in sub.toMutableList()) {
+        val byte = Integer.toHexString(index.toInt())
+        if (byte.length < 2)
+          sb.append("0$byte")
+        else
+          sb.append(byte)
+      }
+      hexStrings.add(sb.toString())
+    }
+
+    val sb = StringBuilder()
+    for (hexString in hexStrings)
+      sb.append(encryptHex(hexString, keyHex))
+
+    return sb.toString()
+  }
+
+  /**
+   * Takes a ciphertext string and decrypts the
+   * the cipher back to plaintext.
+   *
+   * @param cipherText the ciphertext.
+   * @param keyHex the key.
+   * @return the plaintext.
+   */
+  public fun decrypt(cipherText: String, keyHex: String): String {
+
+    var string = cipherText
+    val list = mutableListOf<String>()
+
+    while (string.isNotBlank()) {
+      list.add(string.substring(0, 32))
+      string = string.substring(32)
+    }
+
+    val sb = StringBuilder()
+    for (cipher in list)
+      sb.append(decryptHex(cipher, keyHex))
+
+    return hexToChars(sb.toString())
+  }
+
+  /**
    * Combines the functions in proper order
    * to encrypt plainHex using a given key.
    *
@@ -203,7 +282,8 @@ class AES {
    * @param keyHex the key.
    * @return the ciphertext.
    */
-  fun encrypt(pTextHex: String, keyHex: String): String {
+  private fun encryptHex(pTextHex: String, keyHex: String): String {
+
     val secureKeys = aesRoundKeys(keyHex)
     val pTextBloc = generateMatrix(pTextHex)
     var keyHexBloc = generateMatrix(secureKeys[0])
@@ -232,7 +312,7 @@ class AES {
    * @param keyHex the key.
    * @return the plain hex.
    */
-  fun decrypt(cTextHex: String, keyHex: String): String {
+  private fun decryptHex(cTextHex: String, keyHex: String): String {
 
     val secureKeys = aesRoundKeys(keyHex)
     val cTextBloc = generateMatrix(cTextHex)
@@ -340,6 +420,17 @@ class AES {
       array.add(sb.toString())
     }
     return array
+  }
+
+  private fun hexToChars(hex: String): String {
+    val list = mutableListOf<String>()
+    val chars = hex.toMutableList()
+    while (chars.isNotEmpty())
+      list.add("${chars.removeAt(0)}${chars.removeAt(0)}")
+    val sb = StringBuilder()
+    for (nibble in list)
+      sb.append(Integer.parseInt(nibble, 16).toChar())
+    return sb.toString()
   }
 
   /**

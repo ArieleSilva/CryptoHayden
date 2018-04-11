@@ -16,16 +16,25 @@
 fun main(args: Array<String>) {
 
   // Read key.
-  val key = readLine()!!
+  print("Key: ")
+  val key = readLine()!!.toUpperCase()
 
-  // Ready plainText
-  var plainText = readLine()!!
   val aes = AES()
+  print("Email: ")
+  val email = readLine()!!.replace("[@.]".toRegex(), "").toUpperCase()
 
-  // Encrypt plaintext
-  val cipherText = aes.encrypt(plainText, key)
-  println("Ciphertext: $cipherText")
+  print("Password: ")
+  val pw = readLine()!!.toUpperCase()
 
+  var plainText = "$email:$pw"
+
+  println(plainText)
+  println(aes.encrypt(plainText, key))
+
+  val cipherText = readLine()!!
+  val parts = plainText.split(":".toRegex())
+  for (part in parts)
+    println(part)
   plainText = aes.decrypt(cipherText, key)
-  println("Plaintext: $plainText")
+  println(plainText)
 }
