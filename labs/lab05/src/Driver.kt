@@ -1,3 +1,9 @@
+import java.security.SecureRandom
+import java.util.*
+import javax.crypto.Cipher
+import javax.crypto.KeyGenerator
+import javax.crypto.spec.IvParameterSpec
+
 /**
  * file: Driver.kt
  * author: Kevin Hayden
@@ -15,26 +21,14 @@
  */
 fun main(args: Array<String>) {
 
-  // Read key.
-  print("Key: ")
-  val key = readLine()!!.toUpperCase()
-
-  val aes = AES()
-  print("Email: ")
-  val email = readLine()!!.replace("[@.]".toRegex(), "").toUpperCase()
-
-  print("Password: ")
-  val pw = readLine()!!.toUpperCase()
-
-  var plainText = "$email:$pw"
-
-  println(plainText)
-  println(aes.encrypt(plainText, key))
-
-  val cipherText = readLine()!!
-  val parts = plainText.split(":".toRegex())
-  for (part in parts)
-    println(part)
-  plainText = aes.decrypt(cipherText, key)
-  println(plainText)
+  val key = Encryptor.generateRandomKey()
+  println(key.length)
+  println(key)
+//
+//  var plainText = "$email:$pw"
+//
+//  val cipherText: String? = Encryptor.encrypt(key, initVector, plainText)
+//
+//  println(Encryptor.decrypt(key, initVector, cipherText!!))
 }
+
